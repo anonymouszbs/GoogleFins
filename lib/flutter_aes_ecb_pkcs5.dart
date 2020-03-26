@@ -76,4 +76,19 @@ class FlutterAesEcbPkcs5 {
       throw "Failed to get string encoded: '${e.message}'.";
     }
   }
+
+}
+
+class Flutter_gp{
+  static const MethodChannel _channel =
+  const MethodChannel('flutter_plugin_google');
+  static Future<String> GetGuid(String txt) async {
+    try {
+      final String result =
+      await _channel.invokeMethod('getGuId');
+      return result;
+    } on PlatformException catch (e) {
+      throw "Failed to get string encoded: '${e.message}'.";
+    }
+  }
 }

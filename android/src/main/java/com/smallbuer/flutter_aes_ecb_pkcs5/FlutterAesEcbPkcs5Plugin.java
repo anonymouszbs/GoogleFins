@@ -1,5 +1,9 @@
 package com.smallbuer.flutter_aes_ecb_pkcs5;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -8,11 +12,18 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** FlutterAesEcbPkcs5Plugin */
 public class FlutterAesEcbPkcs5Plugin implements MethodCallHandler {
+  static String GuId = "吹牛逼";
   /** Plugin registration. */
+
+
   public static void registerWith(Registrar registrar) {
+
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_aes_ecb_pkcs5");
     channel.setMethodCallHandler(new FlutterAesEcbPkcs5Plugin());
   }
+
+
+
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
@@ -85,10 +96,11 @@ public class FlutterAesEcbPkcs5Plugin implements MethodCallHandler {
           e.printStackTrace();
           result.error("UNAVAILABLE", "UrlDecode failure.", null);
         }
+      }else if(call.method.equals("GetGuid")){
+        result.success(GuId);
       }
        else {
       result.notImplemented();
     }
   }
-
 }
